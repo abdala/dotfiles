@@ -104,6 +104,8 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
+let NERDTreeQuitOnOpen=1
+
 set undofile                 "turn on the feature  
 set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
 

@@ -5,11 +5,13 @@ alias drunv='drun -v /home/kalayaan:/home/kalayaan -v /etc/passwd:/etc/passwd:ro
 alias docker_garbage='docker rmi $* $(docker images -q -f "dangling=true")'
 alias dip='docker inspect --format "{{ .NetworkSettings.IPAddress }}" $*'
 alias drm='docker rm -v $* $(docker ps -q -f "status=exited")'
+alias alpine='drun alpine:3.8'
 
 dbu() { docker build -t=$1 .; }
 dalias() { alias | grep 'docker\|drun\|dvrun' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
 dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; }
 dsh() { docker exec -it $(docker ps -aqf "name=$1") sh; }
+dexec() { docker exec -it $(docker ps -aqf "name=$1") $2; }
 
 #MySQL
 dmysql() { docker run -d -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=$1 --name mysql_$1 mysql; }
