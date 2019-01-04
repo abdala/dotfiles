@@ -6,6 +6,13 @@ alias docker_garbage='docker rmi $* $(docker images -q -f "dangling=true")'
 alias dip='docker inspect --format "{{ .NetworkSettings.IPAddress }}" $*'
 alias drm='docker rm -v $* $(docker ps -q -f "status=exited")'
 alias alpine='drun alpine:3.8'
+
+alias ag="ag -W 100"
+alias mine="sudo chown -R abdala:abdala"
+alias master="git stash; git co master; git pull origin master"
+alias develop="git stash; git co develop; git pull origin develop"
+alias issue="develop; git co -b"
+alias nah="git reset --hard; git clean -df;"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
